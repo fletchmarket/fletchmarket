@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FLETCHMARKET — Advanced Trading on Robinhood Chain</title>
+<meta name="description" content="Live crypto markets, tokenized stocks, wallet portfolio tracking, and onchain data for Robinhood Chain — in one terminal.">
+<meta name="virtual-protocol-site-verification" content="f4070fd07e94a1ecf72acae915f2fd51" />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<!-- Social / Open Graph. Absolute URLs (GitHub Pages) so Telegram/X/Discord can fetch the preview. Bump ?v= to force a re-scrape after changing the image. -->
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://fletch.markets/">
+<meta property="og:site_name" content="FLETCHMARKET">
+<meta property="og:title" content="FLETCHMARKET — Advanced Trading on Robinhood Chain">
+<meta property="og:description" content="Live crypto markets, tokenized stocks, wallet portfolio tracking, and onchain data for Robinhood Chain.">
+<meta property="og:image" content="https://fletch.markets/assets/brand/banner-x-1500x500.png?v=4">
+<meta property="og:image:width" content="1500">
+<meta property="og:image:height" content="500">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FLETCHMARKET — Advanced Trading on Robinhood Chain">
+<meta name="twitter:description" content="Live crypto markets, tokenized stocks, wallet portfolio tracking, and onchain data for Robinhood Chain.">
+<meta name="twitter:image" content="https://fletch.markets/assets/brand/banner-x-1500x500.png?v=4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Hanken+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/landing.css">
+</head>
+<body>
+
+<header id="hdr">
+  <div class="wrap bar">
+    <a class="logo" href="/">
+      <img src="assets/brand/logo-mark-full.svg" width="26" height="26" alt="FLETCHMARKET" style="border-radius:7px;display:block">
+      FLETCHMARKET
+    </a>
+    <nav class="main">
+      <a href="#terminal">Terminal</a>
+      <a href="#vaults">Vaults</a>
+      <a href="#how">How it works</a>
+      <a href="/terminal#docs">Docs</a>
+    </nav>
+    <a class="btn" href="/terminal">Launch terminal <span class="arr">→</span></a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow rv in"><i class="dot"></i> Live on Robinhood Chain mainnet</span>
+      <h1 class="rv in">Every arrow on the chain, <span class="green">tracked.</span></h1>
+      <p class="sub rv in d1">FLETCHMARKET reads Robinhood Chain directly: live prices for the majors, any wallet’s real balances and history, and every token the explorer indexes. No account. No noise.</p>
+      <div class="cta rv in d2">
+        <a class="btn" href="/terminal">Open the terminal <span class="arr">→</span></a>
+        <a class="btn ghost" href="#how">See how it works</a>
+      </div>
+      <div class="hero-stats rv in d3">
+        <div class="s"><b>45s</b><span>Price refresh, CoinGecko</span></div>
+        <div class="s"><b>10</b><span>Majors tracked live</span></div>
+        <div class="s"><b>4663</b><span>Chain ID, Arbitrum stack</span></div>
+      </div>
+    </div>
+
+    <div class="term rv in d2" id="terminal">
+      <div class="term-head">
+        <span class="pair"><span class="ava"><img src="https://www.google.com/s2/favicons?domain=bitcoin.org&sz=64" alt="Bitcoin" onerror="this.outerHTML='&lt;span class=fb&gt;B&lt;/span&gt;'"></span> BTC / USDG</span>
+        <span class="tag247" id="heroTag">LOADING</span>
+      </div>
+      <div class="term-price">
+        <span class="px" id="livePx">—</span>
+        <span class="chg" id="liveChg">—</span>
+      </div>
+      <canvas class="chart" id="heroChart" height="190" aria-hidden="true"></canvas>
+      <div class="term-foot">
+        <div>24h volume<b>—</b></div>
+        <div>Market cap<b>—</b></div>
+        <div>Data<b>CoinGecko · 45s</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="tape" aria-label="Live stock token prices">
+  <div class="tape-inner" id="tape"></div>
+</div>
+
+<section>
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <p class="kicker">Why FLETCHMARKET</p>
+      <h2>Robinhood Chain shipped on July 1.<br>This is its terminal.</h2>
+      <p>Blocks and gas from the chain’s RPC. Tokens and wallets from its Blockscout explorer. Market prices from CoinGecko. FLETCHMARKET stitches the three together so you don’t have to.</p>
+    </div>
+    <div class="feat">
+      <div class="card rv">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7A9900" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg></div>
+        <h3>Live crypto markets</h3>
+        <p>BTC, ETH, SOL and other majors with live prices, 24h change, market caps, volumes, and real 7-day charts — refreshed every 45 seconds.</p>
+      </div>
+      <div class="card rv d1">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7A9900" stroke-width="2"><path d="M12 3v18M5 10l7-7 7 7"/></svg></div>
+        <h3>Yield radar</h3>
+        <p>Track USDG lending rates across Morpho-powered vaults, with utilization, curator, and TVL per vault.</p>
+      </div>
+      <div class="card rv d2">
+        <div class="ic"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="#7A9900" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></div>
+        <h3>Portfolio tracker</h3>
+        <p>Paste any wallet address to see its real balances and transactions on Robinhood Chain — DeBank-style, read straight from the explorer.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="vaults" class="alt">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <p class="kicker">Live preview</p>
+      <h2>One screen. The whole chain.</h2>
+    </div>
+    <div class="dash">
+      <div class="panel rv">
+        <div class="panel-head">Top Crypto <span class="mono"><i class="sim-tag">LOADING…</i></span></div>
+        <table id="tokTable">
+          <thead><tr><th>ASSET</th><th>PRICE</th><th>24H</th><th>ONCHAIN VOL</th><th>COLLATERAL</th><th>7D</th></tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+      <div class="panel rv d1">
+        <div class="panel-head">Yield radar <span class="mono">USDG VAULTS</span></div>
+        <div class="vault">
+          <div class="top"><b class="asset" style="gap:8px"><span class="ava sm"><img src="https://www.google.com/s2/favicons?domain=morpho.org&sz=64" alt="" loading="lazy"></span>Robinhood Earn · Morpho</b><span class="apy">7.02%</span></div>
+          <div class="meter"><i data-w="78%"></i></div>
+          <div class="meta"><span>UTIL 78%</span><span>TVL $412M</span></div>
+        </div>
+        <div class="vault">
+          <div class="top"><b class="asset" style="gap:8px"><span class="ava sm"><img src="https://www.google.com/s2/favicons?domain=steakhouse.financial&sz=64" alt="" loading="lazy"></span>Steakhouse USDG Prime</b><span class="apy">6.41%</span></div>
+          <div class="meter"><i data-w="64%"></i></div>
+          <div class="meta"><span>UTIL 64%</span><span>TVL $148M</span></div>
+        </div>
+        <div class="vault">
+          <div class="top"><b class="asset" style="gap:8px"><span class="ava sm"><img src="https://www.google.com/s2/favicons?domain=spark.fi&sz=64" alt="" loading="lazy"></span>Spark Crypto-Collateral</b><span class="apy">5.87%</span></div>
+          <div class="meter"><i data-w="52%"></i></div>
+          <div class="meta"><span>UTIL 52%</span><span>TVL $86M</span></div>
+        </div>
+        <div class="vault">
+          <div class="top"><b class="asset" style="gap:8px"><span class="ava sm"><img src="https://www.google.com/s2/favicons?domain=maple.finance&sz=64" alt="" loading="lazy"></span>Maple Institutional</b><span class="apy">5.33%</span></div>
+          <div class="meter"><i data-w="41%"></i></div>
+          <div class="meta"><span>UTIL 41%</span><span>TVL $63M</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="how">
+  <div class="wrap">
+    <div class="sec-head center rv">
+      <p class="kicker">How it works</p>
+      <h2>Nock. Draw. Loose.</h2>
+    </div>
+    <div class="how">
+      <div class="step rv">
+        <span class="n">01 — NOCK</span>
+        <h3>Connect a wallet</h3>
+        <p>Any EVM wallet works — Robinhood Chain is fully EVM-compatible. Read-only mode needs no connection at all.</p>
+      </div>
+      <div class="step rv d1">
+        <span class="n">02 — DRAW</span>
+        <h3>Pull the data</h3>
+        <p>Pick a coin to load its real 7-day chart, or paste a wallet address to pull its balances and history straight off the chain.</p>
+      </div>
+      <div class="step rv d2">
+        <span class="n">03 — LOOSE</span>
+        <h3>Act on the signal</h3>
+        <p>Alerts fire when any tracked coin moves more than ±5% in a day, and the chain token list refreshes itself every 30 seconds.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top:0">
+  <div class="wrap">
+    <div class="band rv">
+      <img class="arrowbg" src="assets/brand/logo-mark-full.svg" width="360" height="360" alt="">
+      <h2>The chain is a week old.<br>Get in before the crowd does.</h2>
+      <p>FLETCHMARKET is free and open while Robinhood Chain finds its footing. Open the terminal — no signup, no wallet required.</p>
+      <a class="btn" href="/terminal">Try the terminal <span class="arr">→</span></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <div class="logo" style="font-size:16px;margin-bottom:8px">
+          <img src="assets/brand/logo-mark-full.svg" width="22" height="22" alt="FLETCHMARKET" style="border-radius:6px;display:block">
+          FLETCHMARKET
+        </div>
+        <span>The crypto terminal for Robinhood Chain.</span>
+      </div>
+      <div style="display:flex;gap:28px">
+        <a href="/terminal#docs">Docs</a><a href="https://x.com/fletchmarket" target="_blank" rel="noopener">Twitter</a><a href="https://github.com/fletchmarket" target="_blank" rel="noopener">GitHub</a>
+      </div>
+    </div>
+    <p class="disc">FLETCHMARKET is an independent, community-built prototype and is not affiliated with, endorsed by, or sponsored by Robinhood Markets, Inc. Crypto prices on this page stream live from CoinGecko; vault yields shown here are an illustrative preview of the terminal's Yield radar. Nothing here is financial advice. Crypto assets and tokenized securities are highly volatile — you can lose everything you put in.</p>
+  </div>
+</footer>
+<script src="assets/js/landing.js"></script>
+</body>
+</html>

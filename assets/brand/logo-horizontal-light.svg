@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 680 140">
+<g transform="translate(24,22) scale(0.96)">
+  <rect width="100" height="100" rx="22" fill="#CCFF00"/>
+  <path d="M75 18 C57 24 43 33 34 44 C29 49 32 56 45 56 C57 51 68 40 75 18 Z" fill="#14130E"/>
+  <path d="M75 18 C57 24 43 33 34 44 C29 49 32 56 45 56 C57 51 68 40 75 18 Z" fill="#14130E" transform="rotate(180 50 50)"/>
+</g>
+<text x="150" y="82" font-family="Archivo Black, Archivo, Arial, sans-serif" font-size="52" letter-spacing="2" fill="#14130E">FLETCH<tspan fill="#7A9900">MARKET</tspan></text>
+<text x="152" y="110" font-family="Archivo Black, Archivo, Arial, sans-serif" font-size="15.5" letter-spacing="4.5" fill="#6C7A70">ADVANCED TRADING · ROBINHOOD CHAIN</text>
+</svg>

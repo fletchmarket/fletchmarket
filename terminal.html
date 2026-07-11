@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>FLETCHMARKET Terminal — Robinhood Chain</title>
+<meta name="description" content="Live crypto markets, wallet portfolio tracking, and onchain data for Robinhood Chain.">
+<meta name="virtual-protocol-site-verification" content="f4070fd07e94a1ecf72acae915f2fd51" />
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://fletch.markets/terminal">
+<meta property="og:site_name" content="FLETCHMARKET">
+<meta property="og:title" content="FLETCHMARKET Terminal — Robinhood Chain">
+<meta property="og:description" content="Live crypto markets, tokenized stocks, wallet portfolio tracking, and onchain data for Robinhood Chain.">
+<meta property="og:image" content="https://fletch.markets/assets/brand/banner-x-1500x500.png?v=4">
+<meta property="og:image:width" content="1500">
+<meta property="og:image:height" content="500">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="FLETCHMARKET Terminal — Robinhood Chain">
+<meta name="twitter:description" content="Live crypto markets, tokenized stocks, wallet portfolio tracking, and onchain data for Robinhood Chain.">
+<meta name="twitter:image" content="https://fletch.markets/assets/brand/banner-x-1500x500.png?v=4">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=Hanken+Grotesk:wght@400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/css/terminal.css">
+</head>
+<body>
+
+<div id="navOverlay"></div>
+<aside id="sidebar">
+  <a class="logo" href="/" title="Back to home">
+    <img src="assets/brand/logo-mark-full.svg" width="26" height="26" alt="FLETCHMARKET" style="border-radius:7px;display:block">
+    FLETCHMARKET
+  </a>
+  <button class="navlink active" data-view="markets">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg>
+    Markets
+  </button>
+  <button class="navlink" data-view="stocks">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h4"/></svg>
+    Stocks
+  </button>
+  <button class="navlink" data-view="trade">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 10l5-5 5 5"/><path d="M7 14l5 5 5-5"/></svg>
+    Trade <span class="soon">SOON</span>
+  </button>
+  <button class="navlink" data-view="portfolio">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="6" width="20" height="14" rx="3"/><path d="M16 13h.01M2 10h20"/></svg>
+    Portfolio
+  </button>
+  <button class="navlink" data-view="vaults">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="7" width="18" height="13" rx="2"/><path d="M8 7V5a4 4 0 018 0v2"/></svg>
+    Vaults
+  </button>
+  <button class="navlink" data-view="staking">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2l3 6 6 1-4.5 4 1 6-5.5-3-5.5 3 1-6L3 9l6-1z"/></svg>
+    Staking <span class="soon">SOON</span>
+  </button>
+  <button class="navlink" data-view="whales">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12c2-4 6-7 10-7s8 3 10 7c-2 4-6 7-10 7S4 16 2 12z"/><circle cx="12" cy="12" r="2.5"/></svg>
+    Chain activity
+  </button>
+  <button class="navlink" data-view="alerts">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8a6 6 0 10-12 0c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.7 21a2 2 0 01-3.4 0"/></svg>
+    Alerts <span class="badge" id="alertCount">0</span>
+  </button>
+  <button class="navlink" data-view="docs">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 19.5A2.5 2.5 0 016.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 014 19.5v-15A2.5 2.5 0 016.5 2z"/></svg>
+    Docs
+  </button>
+
+  <div class="net">
+    <div class="st"><span class="dot" id="netDot"></span> <span id="netLabel">Connecting…</span></div>
+    <div class="row"><span>Network</span><b>Robinhood Chain</b></div>
+    <div class="row"><span>Chain ID</span><b>4663</b></div>
+    <div class="row"><span>Block</span><b id="blockNum">—</b></div>
+    <div class="row"><span>Gas</span><b id="gasPrice">—</b></div>
+  </div>
+</aside>
+
+<main>
+  <div class="topbar">
+    <button id="hamburger" aria-label="Menu"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    <a class="logo mobilebrand" href="/"><img src="assets/brand/logo-mark-full.svg" width="24" height="24" alt="FLETCHMARKET" style="border-radius:6px;display:block"></a>
+    <div class="search">
+      <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6C7A70" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+      <input id="q" type="text" placeholder="Search tokens… (BTC, ETH, SOL)" aria-label="Search tokens">
+    </div>
+    <span class="tag247">MAINNET · 4663</span>
+    <button class="btn" id="connectBtn">Connect wallet</button>
+  </div>
+
+  <div class="content">
+
+    <!-- ================= MARKETS ================= -->
+    <div class="view on" id="v-markets">
+      <div class="stats">
+        <div class="stat"><span>Latest block <i class="live-tag" id="liveTag1">LIVE RPC</i></span><b id="statBlock">—</b></div>
+        <div class="stat"><span>Gas price <i class="live-tag" id="liveTag2">LIVE RPC</i></span><b id="statGas">—</b></div>
+        <div class="stat"><span>24h volume · 10 majors <i class="live-tag">LIVE</i></span><b id="statVol">—</b></div>
+        <div class="stat"><span>Big movers ±5% · 24h <i class="live-tag">LIVE</i></span><b id="statArb">0</b></div>
+      </div>
+
+      <div class="grid-main">
+        <div class="panel">
+          <div class="panel-head">
+            <div class="chart-head">
+              <span class="ava" id="chAva"></span>
+              <span id="chSym">BTC / USDG</span>
+            </div>
+            <div class="tf" id="tf">
+              <button data-tf="1m">1m</button><button data-tf="15m">15m</button><button data-tf="1H" class="on">1H</button><button data-tf="4H">4H</button><button data-tf="1D">1D</button><button data-tf="1W">1W</button>
+            </div>
+          </div>
+          <div class="chart-price">
+            <span class="px" id="chPx">$—</span>
+            <span class="chg up" id="chChg">—</span>
+            <span class="gap-chip ok" id="chGap">GAP —</span>
+          </div>
+          <canvas id="bigChart" height="250"></canvas>
+        </div>
+
+        <div class="panel">
+          <div class="panel-head">Top movers <span class="mono">24H · LIVE</span></div>
+          <div id="gapList"></div>
+        </div>
+      </div>
+
+      <div class="panel" style="margin-bottom:14px">
+        <div class="panel-head">Crypto Markets <span class="mono"><i class="sim-tag" id="spotTag">LOADING…</i> · COINGECKO · 45s REFRESH</span></div>
+        <div style="max-height:420px;overflow-y:auto">
+        <table id="tokTable">
+          <thead><tr><th>ASSET</th><th>PRICE</th><th>24H</th><th>MARKET CAP</th><th>VOLUME (24H)</th><th>7D</th></tr></thead>
+          <tbody></tbody>
+        </table>
+        </div>
+      </div>
+
+      <div class="panel">
+        <div class="panel-head">Live tokens on chain <span class="mono" id="chainTokSrc"><i class="live-tag">LIVE · BLOCKSCOUT</i></span></div>
+        <div style="max-height:420px;overflow-y:auto">
+        <table id="chainTokTable">
+          <thead><tr><th>TOKEN</th><th>SYMBOL</th><th>TYPE</th><th>HOLDERS</th><th>PRICE</th><th></th></tr></thead>
+          <tbody><tr><td colspan="6"><div class="skel" style="margin:10px 0"></div><div class="skel" style="margin:10px 0"></div></td></tr></tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= STOCKS ================= -->
+    <div class="view" id="v-stocks">
+      <div class="stats">
+        <div class="stat"><span>Tokenized equities &amp; ETFs <span class="mono" id="stocksSrc"><i class="sim-tag">LOADING…</i></span></span><b id="stocksCount">—</b></div>
+        <div class="stat"><span>Combined market cap</span><b id="stocksMcap">—</b></div>
+      </div>
+      <div class="panel">
+        <div class="panel-head">Stocks on Robinhood Chain <span class="mono">TOKENIZED REAL-WORLD ASSETS</span></div>
+        <div style="max-height:560px;overflow-y:auto">
+        <table id="stocksTable">
+          <thead><tr><th>ASSET</th><th>SYMBOL</th><th>PRICE</th><th>MARKET CAP</th><th>HOLDERS</th><th></th></tr></thead>
+          <tbody><tr><td colspan="6"><div class="skel" style="margin:10px 0"></div><div class="skel" style="margin:10px 0"></div></td></tr></tbody>
+        </table>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= PORTFOLIO ================= -->
+    <div class="view" id="v-portfolio">
+      <div class="pf-search">
+        <div class="field">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#6C7A70" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>
+          <input id="pfAddr" type="text" placeholder="0x… any wallet address on Robinhood Chain" spellcheck="false" aria-label="Wallet address">
+        </div>
+        <button class="btn" id="pfGo" style="margin-left:0">Track portfolio →</button>
+        <button class="btn" id="pfDemo" style="margin-left:0;background:#fff;color:var(--ink);border:1.5px solid var(--line);box-shadow:none">Demo wallet</button>
+      </div>
+      <div id="pfStatus">Paste any wallet address to view its real balances &amp; transactions on Robinhood Chain — or connect your own wallet in the top right.</div>
+
+      <div class="who" id="pfWho">
+        <div class="avatar" id="pfAvz"></div>
+        <div>
+          <div class="addr" id="pfWhoAddr">0x…</div>
+          <div class="sub" id="pfWhoSub">Robinhood Chain · 4663</div>
+        </div>
+        <a id="pfExp" href="#" target="_blank" rel="noopener">view on explorer ↗</a>
+      </div>
+
+      <div class="stats" id="pfCards" style="display:none">
+        <div class="stat"><span>Net worth <i class="live-tag" id="pfSrc">LIVE ONCHAIN</i></span><b id="pfWorth">$0.00</b></div>
+        <div class="stat"><span>ETH balance</span><b id="pfEth">—</b></div>
+        <div class="stat"><span>Tokens held</span><b id="pfCount">—</b></div>
+        <div class="stat"><span>Recent txs</span><b id="pfTxN">—</b></div>
+      </div>
+
+      <div class="pf-grid" id="pfGrid" style="display:none">
+        <div>
+          <div class="panel" style="margin-bottom:14px">
+            <div class="panel-head">Assets <span class="mono" id="pfAssetSrc">BLOCKSCOUT API</span></div>
+            <div id="pfTokList"></div>
+          </div>
+          <div class="panel">
+            <div class="panel-head">Recent activity <span class="mono">LATEST TRANSACTIONS</span></div>
+            <div id="pfTxList"></div>
+          </div>
+        </div>
+        <div class="panel">
+          <div class="panel-head">Allocation</div>
+          <div class="donut-wrap">
+            <canvas id="donut" width="140" height="140"></canvas>
+            <div class="legend" id="pfLegend"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ================= VAULTS ================= -->
+    <div class="view" id="v-vaults">
+      <div class="panel" style="margin-bottom:14px"><div class="panel-head">Yield radar <span class="mono" id="vaultSrc"><i class="sim-tag">LOADING…</i></span></div></div>
+      <div class="vgrid" id="vaultGrid"></div>
+    </div>
+
+    <!-- ================= WHALES ================= -->
+    <div class="view" id="v-whales">
+      <div class="panel">
+        <div class="panel-head">Chain activity <span class="mono" id="whaleSrc"><i class="sim-tag">LOADING…</i></span></div>
+        <div class="feed" id="whaleFeed"></div>
+      </div>
+    </div>
+
+    <!-- ================= ALERTS ================= -->
+    <div class="view" id="v-alerts">
+      <div class="panel">
+        <div class="panel-head">Market alerts <span class="mono">MOVES ≥ ±5% IN 24H</span></div>
+        <div id="alertList"><div class="empty">No alerts yet. When any tracked coin moves more than ±5% in 24 hours, it will show up here.</div></div>
+      </div>
+    </div>
+
+    <!-- ================= DOCS ================= -->
+    <!-- ================= TRADE (soon) ================= -->
+    <div class="view" id="v-trade">
+      <div class="soon-hero">
+        <span class="soon-badge">COMING SOON</span>
+        <div class="soon-ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 10l5-5 5 5"/><path d="M7 14l5 5 5-5"/></svg></div>
+        <h1>Buy &amp; sell tokens on Robinhood Chain</h1>
+        <p>Swap any token that trades on Robinhood Chain — right from FLETCHMARKET, straight to your wallet. We're wiring this to the chain's live liquidity so trades settle onchain, non-custodial. Launching after the DEX integration is verified.</p>
+        <div class="soon-tags"><span>Non-custodial</span><span>Onchain settlement</span><span>Best-price routing</span></div>
+      </div>
+    </div>
+
+    <!-- ================= STAKING (soon) ================= -->
+    <div class="view" id="v-staking">
+      <div class="soon-hero">
+        <span class="soon-badge">COMING SOON</span>
+        <div class="soon-ic"><svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2l3 6 6 1-4.5 4 1 6-5.5-3-5.5 3 1-6L3 9l6-1z"/></svg></div>
+        <h1>Stake FLETCH, earn rewards</h1>
+        <p>Stake the FLETCHMARKET token to earn protocol rewards and unlock premium terminal features. Staking goes live after the token launch — stay tuned.</p>
+        <div class="soon-tags"><span>Flexible unstake</span><span>Real yield</span><span>Governance</span></div>
+      </div>
+    </div>
+
+    <div class="view" id="v-docs">
+      <div class="docs">
+        <h1>FLETCHMARKET Docs</h1>
+        <p>FLETCHMARKET is an independent analytics terminal for crypto markets on Robinhood Chain — tracking onchain prices, premium gaps, lending yields, and whale flows in real time.</p>
+
+        <h2>Network</h2>
+        <div class="kv">
+          <span>Chain</span><b>Robinhood Chain (Mainnet)</b>
+          <span>Chain ID</span><b>4663</b>
+          <span>Gas token</span><b>ETH</b>
+          <span>Public RPC</span><b>rpc.mainnet.chain.robinhood.com</b>
+          <span>Explorer</span><b>robinhoodchain.blockscout.com</b>
+          <span>Stack</span><b>Arbitrum L2 on Ethereum</b>
+        </div>
+
+        <h2>Data sources</h2>
+        <p>Block number and gas price are read live from the public Robinhood Chain RPC via standard JSON-RPC (<code>eth_blockNumber</code>, <code>eth_gasPrice</code>). All market prices, 24h changes, market caps, volumes, and 7-day charts stream live from the CoinGecko public API (45s refresh), and the token list under "Live tokens on chain" refreshes every 30 seconds from the Blockscout explorer. The Stocks tab lists every tokenized real-world equity and ETF issued on the chain, with live price and market cap from Blockscout (60s refresh). Vault APY and TVL come from the DefiLlama yields API (5min refresh), and Chain activity streams real token transfers from the Blockscout explorer (20s refresh). If your network can't reach a given source, that panel will say so instead of showing stale numbers.</p>
+
+        <h2>Live market data</h2>
+        <p>Every number in the Markets tab is live: prices, 24h change, market cap, volume, and the 7-day charts all stream from the CoinGecko public API and refresh every 45 seconds. Alerts fire when any tracked coin moves more than ±5% in 24 hours. The Premium Gap engine (onchain AMM price vs CEX spot) will activate once Uniswap pools on Robinhood Chain are indexed.</p>
+
+        <h2>Connect wallet</h2>
+        <p>The Connect button uses your browser wallet (e.g. MetaMask) and offers to add Robinhood Chain automatically with the official network parameters above. FLETCHMARKET never asks for your seed phrase and cannot move your funds.</p>
+
+        <h2>Disclaimer</h2>
+        <p>FLETCHMARKET is a community prototype, not affiliated with or endorsed by Robinhood Markets, Inc. Nothing here is financial advice. Crypto assets and tokenized securities are highly volatile.</p>
+      </div>
+    </div>
+
+    <p class="disc">FLETCHMARKET is an independent, community-built prototype and is not affiliated with, endorsed by, or sponsored by Robinhood Markets, Inc. Prices, volumes, and charts stream from CoinGecko; block and gas data from the Robinhood Chain RPC; onchain tokens and activity from Blockscout; vault yields from DefiLlama. Nothing here is financial advice.</p>
+  </div>
+</main>
+
+<div id="toasts"></div>
+<script src="assets/js/config.js"></script>
+<script src="assets/js/core.js"></script>
+<script src="assets/js/markets.js"></script>
+<script src="assets/js/widgets.js"></script>
+<script src="assets/js/chain-tokens.js"></script>
+<script src="assets/js/stocks.js"></script>
+<script src="assets/js/portfolio.js"></script>
+</body>
+</html>
